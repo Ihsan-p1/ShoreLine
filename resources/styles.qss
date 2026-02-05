@@ -1,0 +1,482 @@
+/*
+ * ShoreLine - Modern Qt Stylesheet
+ * Professional photo culling with refined aesthetics
+ */
+
+/* =============================================
+   Color Palette
+   ============================================= */
+/* 
+   Primary: Deep blue-gray #1a1d23
+   Surface: Warm stone #f8f7f4
+   Accent Keep: Emerald #10b981
+   Accent Review: Amber #f59e0b
+   Accent Reject: Rose #ef4444
+   Text: Near-black #1f2937
+   Muted: Gray #6b7280
+*/
+
+/* =============================================
+   Global
+   ============================================= */
+
+* {
+    font-family: "Segoe UI", "Inter", -apple-system, sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+QMainWindow, QWidget {
+    background-color: #f8f7f4;
+    color: #1f2937;
+}
+
+/* =============================================
+   Welcome Screen
+   ============================================= */
+
+#welcome-screen {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #f8f7f4, stop:0.5 #f3f2ef, stop:1 #edecea);
+}
+
+#welcome-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a1d23;
+    letter-spacing: -1px;
+}
+
+#welcome-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #6b7280;
+    letter-spacing: 0.3px;
+}
+
+#import-btn {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 40px;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #1a1d23, stop:1 #2d3139);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+}
+
+#import-btn:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2d3139, stop:1 #3d4249);
+}
+
+#import-btn:pressed {
+    background: #1a1d23;
+}
+
+#welcome-hint {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 12px;
+}
+
+#keyboard-guide-container {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: 20px 32px;
+}
+
+#guide-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+#shortcut-key {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1d23;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 6px 12px;
+    min-width: 32px;
+}
+
+#shortcut-action {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* =============================================
+   Status Bar
+   ============================================= */
+
+#status-bar {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #ffffff, stop:1 #fafaf9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#filename {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+#progress-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #9ca3af;
+}
+
+#progress-bar {
+    background-color: #e5e7eb;
+    border: none;
+    border-radius: 3px;
+}
+
+#progress-bar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #10b981, stop:1 #34d399);
+    border-radius: 3px;
+}
+
+#count-keep, #count-review, #count-reject {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-left: 6px;
+    border: 2px solid transparent;
+}
+
+#count-keep {
+    color: #059669;
+    background-color: rgba(16, 185, 129, 0.12);
+}
+
+#count-keep:hover {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+}
+
+#count-review {
+    color: #d97706;
+    background-color: rgba(245, 158, 11, 0.12);
+}
+
+#count-review:hover {
+    background-color: rgba(245, 158, 11, 0.2);
+    border-color: #f59e0b;
+}
+
+#count-reject {
+    color: #dc2626;
+    background-color: rgba(239, 68, 68, 0.12);
+}
+
+#count-reject:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+
+/* =============================================
+   Filmstrip
+   ============================================= */
+
+#filmstrip {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #f3f2ef, stop:1 #edecea);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#filmstrip QScrollBar:vertical {
+    width: 8px;
+    background: transparent;
+    margin: 4px 2px;
+}
+
+#filmstrip QScrollBar::handle:vertical {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    min-height: 40px;
+}
+
+#filmstrip QScrollBar::handle:vertical:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+#filmstrip QScrollBar::add-line:vertical,
+#filmstrip QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* =============================================
+   Photo Viewer
+   ============================================= */
+
+#viewer-container {
+    background-color: #f8f7f4;
+}
+
+PhotoViewer {
+    background-color: #f8f7f4;
+}
+
+/* =============================================
+   Action Bar
+   ============================================= */
+
+#action-bar {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #ffffff, stop:1 #fafaf9);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 12px 0;
+}
+
+#btn-keep, #btn-review, #btn-reject {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+#btn-keep {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+#btn-keep:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #10b981, stop:1 #059669);
+    color: white;
+    border-color: #059669;
+}
+
+#btn-review {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+#btn-review:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #f59e0b, stop:1 #d97706);
+    color: white;
+    border-color: #d97706;
+}
+
+#btn-reject {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+#btn-reject:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #ef4444, stop:1 #dc2626);
+    color: white;
+    border-color: #dc2626;
+}
+
+/* =============================================
+   Technical Overlay
+   ============================================= */
+
+#tech-overlay {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+#tech-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#tech-value {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+#tech-value[level="low"] {
+    color: #dc2626;
+    background-color: rgba(239, 68, 68, 0.12);
+}
+
+#tech-value[level="medium"] {
+    color: #d97706;
+    background-color: rgba(245, 158, 11, 0.12);
+}
+
+#tech-value[level="high"] {
+    color: #059669;
+    background-color: rgba(16, 185, 129, 0.12);
+}
+
+/* =============================================
+   Details Panel
+   ============================================= */
+
+#details-panel {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #fafaf9, stop:1 #ffffff);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#details-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1f2937;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 12px;
+}
+
+#detail-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #9ca3af;
+}
+
+#detail-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+}
+
+#detail-separator {
+    background-color: rgba(0, 0, 0, 0.06);
+    margin: 12px 0;
+}
+
+/* =============================================
+   Export Dialog
+   ============================================= */
+
+#export-dialog {
+    background-color: #ffffff;
+}
+
+#export-info {
+    font-size: 14px;
+    color: #374151;
+}
+
+#folder-input {
+    font-size: 13px;
+    padding: 10px 14px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #1f2937;
+}
+
+#folder-input:focus {
+    border-color: #10b981;
+    background-color: #ffffff;
+}
+
+#browse-btn {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 16px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #374151;
+}
+
+#browse-btn:hover {
+    background-color: #e5e7eb;
+}
+
+#cancel-btn {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #6b7280;
+}
+
+#cancel-btn:hover {
+    background-color: #f3f4f6;
+}
+
+#export-btn-action {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 24px;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #10b981, stop:1 #059669);
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+#export-btn-action:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #059669, stop:1 #047857);
+}
+
+/* =============================================
+   Toast Notification
+   ============================================= */
+
+#toast {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #1f2937, stop:1 #111827);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 10px;
+}
+
+/* =============================================
+   Tooltips
+   ============================================= */
+
+QToolTip {
+    background-color: #1f2937;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* =============================================
+   Message Boxes
+   ============================================= */
+
+QMessageBox {
+    background-color: #ffffff;
+}
+
+QMessageBox QLabel {
+    color: #374151;
+    font-size: 13px;
+}
+
+QMessageBox QPushButton {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    min-width: 80px;
+}

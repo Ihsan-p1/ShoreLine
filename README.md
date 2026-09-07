@@ -1,80 +1,92 @@
 # ShoreLine
 
-**Personal photo culling for photographers.**
+Keyboard-first photo culling for photographers. ShoreLine handles the first pass over a
+large shoot: keep, reject, or flag for review, without reaching for the mouse. Built with
+Python and Qt (PySide6).
 
-ShoreLine is a fast, keyboard-first desktop application designed to speed up the initial selection process of extensive photo shoots. Built with Python and Qt (PySide6).
-
-> **Note**: This tool was developed specifically for my personal workflow. It is open for anyone to use, fork, or modify, but it is provided "as-is" without guaranteed support.
+I wrote it for my own workflow. Use it, fork it, change it, but it comes as-is with no
+promise of support.
 
 ## Features
 
-- **Keyboard-First Design**: Cull thousands of photos without touching the mouse.
-- **State Machine**: Simple UNSEEN → KEPT / REJECTED / REVIEW flow.
-- **Instant Navigation**: Asynchronous caching prevents loading delays.
-- **Technical Analysis**: Real-time focus peaking and noise level indicators.
-- **Export Workflow**: Copy kept photos to a separate folder with one click.
-- **Privacy Focused**: Runs entirely offline on your local machine.
+- Cull thousands of photos from the keyboard alone.
+- One state machine per photo: UNSEEN, then KEPT, REJECTED, or REVIEW. A photo marked for
+  review can still become kept or rejected; kept and rejected cannot flip straight into
+  each other.
+- Asynchronous caching, so moving to the next photo does not wait on a decode.
+- Focus and noise readouts from Laplacian variance, shown as low, medium, or high with a
+  short explanation.
+- Export the kept photos to a separate folder in one action.
+- Xbox-style gamepad support, hot-pluggable.
+- Runs offline. Nothing is uploaded anywhere.
 
 ## Prerequisites
 
-- **Python 3.10+**
-- **pip** (Python package manager)
+- Python 3.10 or newer
+- pip
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Ihsan-p1/ShoreLine.git
-   cd ShoreLine
-   ```
+```bash
+git clone https://github.com/Ihsan-p1/ShoreLine.git
+cd ShoreLine
+pip install -r requirements.txt
+```
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Dependencies: PySide6, OpenCV, Pillow, exifread, and pygame for the gamepad.
 
 ## Usage
 
-1. Run the application:
-   ```bash
-   python main.py
-   ```
+```bash
+python main.py
+```
 
-2. Click **Import Folder** or drag and drop a folder of images.
+Click Import Folder, or drag a folder of images onto the window.
 
-3. Use keyboard shortcuts to cull:
+### Keyboard
 
-   | Key | Action |
-   | :--- | :--- |
-   | **L** | Keep photo |
-   | **J** | Reject photo |
-   | **K** | Mark for review |
-   | **A / D** | Previous / Next photo |
-   | **W** | Toggle 100% Zoom |
-   | **S** (hold) | Show Focus & Noise analysis |
-   | **I** | Toggle Details Panel |
-   | **E** | Export Kept Photos |
-   | **U** | Undo last action |
+| Key | Action |
+| :--- | :--- |
+| L | Keep photo |
+| J | Reject photo |
+| K | Mark for review |
+| A / D | Previous / next photo |
+| W | Toggle 100% zoom |
+| S (hold) | Show focus and noise analysis |
+| I | Toggle the details panel |
+| E | Export kept photos |
+| U | Undo the last action |
 
-## Project Structure
+### Gamepad
+
+A controller is picked up when plugged in and released when unplugged. Button indices
+follow the Xbox layout and may differ on other pads.
+
+| Control | Action |
+| :--- | :--- |
+| A | Keep photo |
+| B | Reject photo |
+| Y | Mark for review |
+| LB | Undo |
+| RB | Next photo |
+| D-pad left / right | Previous / next photo |
+| LT (hold) | Show focus and noise analysis |
+| RT | Toggle 100% zoom |
+
+## Project structure
 
 ```
 ShoreLine/
 ├── main.py                 # Entry point
-├── resources/              # Stylesheets and assets
+├── resources/styles.qss    # Qt stylesheet
 └── src/
-    ├── app.py              # Main window logic
-    ├── core/               # State machine, session, image loader
-    ├── widgets/            # Custom UI components
-    ├── input/              # Keyboard & gamepad handling
-    └── utils/              # EXIF and helper functions
+    ├── app.py              # Main window
+    ├── core/               # State machine, session, image loader, analyzer
+    ├── widgets/            # Photo viewer, filmstrip, details panel, tech overlay
+    ├── input/              # Keyboard and gamepad handlers
+    └── utils/exif_reader.py
 ```
 
 ## Contributing
 
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
-
+Fork it, branch, commit, push, open a pull request. There is no test suite to satisfy yet.
